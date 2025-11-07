@@ -1,7 +1,7 @@
-🗂️ Database Name: collegeDB
-📘 Collection: students
+ Database Name: collegeDB
+ Collection: students
 
-🧩 Step 1: Create & Insert Documents
+Step 1: Create & Insert Documents
 use collegeDB
 
 db.students.insertMany([
@@ -13,7 +13,7 @@ db.students.insertMany([
   { _id: 6, name: "Sneha", dept: "CSE", marks: 82, city: "Nashik" }
 ])
 
-⚙️ Part 1: Aggregation Queries
+ Part 1: Aggregation Queries
 
 Aggregation is used for grouping, filtering, and performing calculations (like SUM, AVG, COUNT).
 
@@ -23,7 +23,7 @@ db.students.aggregate([
 ])
 
 
-📊 Output:
+ Output:
 
 { "_id": "CSE", "avgMarks": 86.33 }
 { "_id": "IT", "avgMarks": 83 }
@@ -45,7 +45,7 @@ db.students.aggregate([
   { $group: { _id: "$dept", maxMarks: { $max: "$marks" } } }
 ])
 
-⚡ Part 2: Indexing
+ Part 2: Indexing
 
 Indexes improve the search speed of queries.
 
@@ -53,17 +53,18 @@ Indexes improve the search speed of queries.
 db.students.createIndex({ dept: 1 })
 
 
-✅ 1 means ascending order.
+ 1 means ascending order.
 Now MongoDB will quickly search/filter by dept.
 
 ② Create a Compound Index (on dept and marks)
 db.students.createIndex({ dept: 1, marks: -1 })
 
 
-✅ -1 means descending order for marks.
+ -1 means descending order for marks.
 
 ③ Check Indexes Created
 db.students.getIndexes()
 
 ④ Search Using Indexed Field
+
 db.students.find({ dept: "CSE" })
